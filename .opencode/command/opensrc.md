@@ -4,6 +4,20 @@ description: Clone a repo and enhance knowledge base
 
 Clone a repository using opensrc and generate hierarchical AGENTS.md documentation.
 
+<critical>
+**TodoWrite ALL phases. Mark in_progress → completed in real-time.**
+  
+```
+TodoWrite([
+  { id: "loading", status: "pending", priority: "medium" },
+  { id: "clonning", status: "pending", priority: "high" },
+  { id: "navigating to", status: "pending", priority: "medium" },
+  { id: "load skill", status: "pending", priority: "high" },
+  { id: "reporting", status: "pending", priority: "medium" }
+])
+```
+</critical>
+
 ## Workflow
 
 ### Step 1: Load opensrc skill

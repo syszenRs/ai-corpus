@@ -16,6 +16,22 @@ Complete one task from the ./todo.md file. Implements the next task most priorit
 
 ## Process
 
+<critical>
+**TodoWrite ALL phases. Mark in_progress → completed in real-time.**
+  
+```
+TodoWrite([
+  { id: "planning", status: "pending", priority: "high" },
+  { id: "implementing", status: "pending", priority: "medium" },
+  { id: "testing", status: "pending", priority: "medium" },
+  { id: "reviewing", status: "pending", priority: "medium" },
+  { id: "documentation", status: "pending", priority: "medium" },
+  { id: "commit", status: "pending", priority: "medium" },
+  { id: "updating status", status: "pending", priority: "medium" }
+])
+```
+</critical>
+
 DURING THE PROCESS, UNLESS YOU NEED CLARIFICATIONS GIVE FEEDBACK TO THE USER ABOUT WHAT YOUR ARE DOING;
 EACH STEP BELOW HAS SECTION 'FEEDBACK'; THIS SHOULD BE A GUIDELINE FOR WHAT YOU SHOW;
 
@@ -91,7 +107,7 @@ Work on the single task until verification steps pass.
 
 call skill `skill({ name: 'index-knowledge' })` to udpate all current changes
 
-### 5. Commit
+### 6. Commit
 
 Ask user if wants to commit, if yes run skill `skill({ name: 'commit-message' })`
 
@@ -99,7 +115,7 @@ commit using message from skill
 
 `git add -A && git commit -m '<message from skill>'`
 
-### 6. Update Progress
+### 7. Update Progress
 
 Update progress at `.todo/<folder_name>/todo.md` file and any spec changes that arise during development
 

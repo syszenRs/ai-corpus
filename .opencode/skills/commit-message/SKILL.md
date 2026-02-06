@@ -26,6 +26,19 @@ Generate consistent, informative commit messages following the Conventional Comm
 3. **Find the scope**: Identify the main area affected
 4. **Write the message**: Follow the format below
 
+<critical>
+**TodoWrite ALL phases. Mark in_progress → completed in real-time.**
+  
+```
+TodoWrite([
+  { id: "analyzing", status: "pending", priority: "high" },
+  { id: "identifying", status: "pending", priority: "medium" },
+  { id: "understanding", status: "pending", priority: "medium" },
+  { id: "writing", status: "pending", priority: "medium" }
+])
+```
+</critical>
+
 ## Commit Message Format
 
 ```

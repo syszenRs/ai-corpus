@@ -9,6 +9,19 @@ Guidance: $ARGUMENTS
 
 ## process
 
+<critical>
+**TodoWrite ALL phases. Mark in_progress → completed in real-time.**
+  
+```
+TodoWrite([
+  { id: "formatting & testing", status: "pending", priority: "high" },
+  { id: "getting files", status: "pending", priority: "medium" },
+  { id: "reviewing", status: "pending", priority: "medium" },
+  { id: "done", status: "pending", priority: "medium" }
+])
+```
+</critical>
+
 ### Step 1
 
 Before run ALL applicable:

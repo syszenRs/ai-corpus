@@ -16,7 +16,7 @@ Produce implementation-ready specs through rigorous dialogue and honest trade-of
 ## Workflow Phases
 
 ```
-CLARIFY ──[user responds]──► DISCOVER ──[done]──► DRAFT ──[complete]──► REFINE ──[approved]──► DONE
+CLARIFY ──[user responds]──► DISCOVER ──[done]──► DRAFT ──[complete]──► REFINE ──[approved]──► SPEC COMPLETE ─► DELIVERABLES
    │                            │                   │                      │
    └──[still ambiguous]──◄──────┴───────────────────┴────[gaps found]──────┘
 ```
@@ -27,6 +27,21 @@ CLARIFY ──[user responds]──► DISCOVER ──[done]──► DRAFT ─�
 ---
 Phase: CLARIFY | Waiting for: answers to questions 1-4
 ```
+
+<critical>
+**TodoWrite ALL phases. Mark in_progress → completed in real-time.**
+  
+```
+TodoWrite([
+  { id: "clarify", status: "pending", priority: "high" },
+  { id: "discover", status: "pending", priority: "high" },
+  { id: "draft", status: "pending", priority: "high" },
+  { id: "refine", status: "pending", priority: "high" }
+  { id: "spec complete", status: "pending", priority: "medium" }
+  { id: "deliverables", status: "pending", priority: "medium" }
+])
+```
+</critical>
 
 ---
 
@@ -136,7 +151,7 @@ Run completeness check:
 
 ---
 
-## Phase 5: DONE
+## Phase 5: Spec Complete
 
 ### Final Output
 
@@ -174,7 +189,7 @@ Open Questions:
 2. Write spec to `.todo/<folder_name>/spec.md`
 3. Confirm: `Spec written to: .todo/<folder_name>/spec.md`
 
-## Phase 6 (MANDATORY)
+## Phase 6: Deliverables (MANDATORY)
 
 After user acceptance of phase 5
 if none exists create based on [model](assets/todo-example.md)

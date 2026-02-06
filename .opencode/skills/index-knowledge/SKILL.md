@@ -115,85 +115,131 @@ Task(
 Task(
   description="overview docs",
   subagent_type="explore",
-  prompt="Overview docs: CHECK for glossary.md and architecture.md → REPORT missing files, outdated definitions, or conceptual mismatches with repo reality"
+  prompt="
+    for reference use (references/structure.md) at the overview section;
+    Review current Overview docs → REPORT missing files, outdated definitions, or conceptual mismatches with repo reality;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO overview DOCS;
+  "
 )
 
 Task(
   description="domain structure",
   subagent_type="explore",
-  prompt="Domain docs: CHECK entities/, workflows/, rules.md, examples.md → REPORT missing concepts, orphaned docs, or concepts without references"
-)
-
-Task(
-  description="domain semantics",
-  subagent_type="explore",
-  prompt="Domain semantics: VALIDATE that domain docs contain no code, APIs, schemas, or implementation details → REPORT violations only"
+  prompt="
+    for reference use (references/structure.md) at the domain section;
+    Review current Domain docs → REPORT missing concepts, orphaned docs, or concepts without references;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO domain DOCS;
+  "
 )
 
 Task(
   description="technical architecture docs",
   subagent_type="explore",
-  prompt="Technical architecture: CHECK docs/technical/architecture → REPORT mismatches with actual component structure or missing components"
+  prompt="
+    for reference use (references/structure.md) at the technical section;
+    Review docs/technical/architecture → REPORT mismatches with actual component structure or missing components;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO technical/architecture DOCS;
+    "
 )
 
 Task(
-  description="api docs",
+  description="technical api docs",
   subagent_type="explore",
-  prompt="API docs: CHECK docs/technical/api → REPORT undocumented APIs, deprecated endpoints still documented, or missing contracts"
+  prompt="
+    for reference use (references/structure.md) at the technical section;
+    Review docs/technical/api → REPORT undocumented APIs, deprecated endpoints still documented, or missing contracts;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO technical/api DOCS;
+    "
 )
 
 Task(
-  description="data docs",
+  description="technical data docs",
   subagent_type="explore",
-  prompt="Data docs: CHECK docs/technical/data/schema.md → REPORT missing core models, outdated relationships, or inconsistencies with usage"
+  prompt="
+    for reference use (references/structure.md) at the technical section;
+    Review docs/technical/data/schema → REPORT missing core models, outdated relationships, or inconsistencies with usage;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO technical/data DOCS;
+  "
 )
 
 Task(
-  description="security docs",
+  description="technical security docs",
   subagent_type="explore",
-  prompt="Security docs: CHECK docs/technical/security.md → REPORT missing threat assumptions, undocumented auth flows, or stale guarantees"
+  prompt="
+    for reference use (references/structure.md) at the technical section;
+    Review docs/technical/security → REPORT missing threat assumptions, undocumented auth flows, or stale guarantees;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO technical/security DOCS;
+  "
 )
 
 Task(
   description="development setup docs",
   subagent_type="explore",
-  prompt="Development setup: CHECK docs/development/setup.md → REPORT missing prerequisites, outdated commands, or broken setup instructions"
+  prompt="
+    for reference use (references/structure.md) at the development section;
+    Review docs/development/setup → REPORT missing prerequisites, outdated commands, or broken setup instructions;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO development/setup DOCS;
+  "
 )
 
 Task(
   description="development conventions docs",
   subagent_type="explore",
-  prompt="Development conventions: CHECK docs/development/conventions.md → REPORT undocumented conventions found in code or stale rules"
+  prompt="
+    for reference use (references/structure.md) at the development section;
+    Review docs/development/conventions → REPORT undocumented conventions found in code or stale rules;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO development/conventions DOCS;
+    "
 )
 
 Task(
   description="testing docs",
   subagent_type="explore",
-  prompt="Testing docs: CHECK docs/development/testing.md → REPORT test types or practices present in code but undocumented"
+  prompt="
+    for reference use (references/structure.md) at the development section;
+    Review docs/development/testing → REPORT test types or practices present in code but undocumented;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO development/testing DOCS;
+    "
 )
 
 Task(
   description="deployment docs",
   subagent_type="explore",
-  prompt="Deployment docs: CHECK docs/operations/deployment.md → REPORT undocumented environments, deploy paths, or rollback procedures"
+  prompt="
+    for reference use (references/structure.md) at the operations section;
+    Review docs/operations/deployment.md → REPORT undocumented environments, deploy paths, or rollback procedures;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO operations/deployment DOCS;
+    "
 )
 
 Task(
   description="monitoring docs",
   subagent_type="explore",
-  prompt="Monitoring docs: CHECK docs/operations/monitoring.md → REPORT missing metrics, alerts, or dashboards used in practice"
+  prompt="
+    for reference use (references/structure.md) at the operations section;
+    Review docs/operations/monitoring.md → REPORT missing metrics, alerts, or dashboards used in practice;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO operations/monitoring DOCS;
+  "
 )
 
 Task(
   description="runbooks docs",
   subagent_type="explore",
-  prompt="Runbooks: CHECK docs/operations/runbooks.md → REPORT recurring incidents without runbooks or outdated procedures"
+  prompt="
+    for reference use (references/structure.md) at the operations section;
+    Review docs/operations/runbooks.md → REPORT recurring incidents without runbooks or outdated procedures;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO operations/runbooks DOCS;
+    "
 )
 
 Task(
   description="decision records",
   subagent_type="explore",
-  prompt="Decisions: CHECK docs/decisions → REPORT missing ADRs for major architectural choices or outdated decision status"
+  prompt="
+    for reference use (references/structure.md) at the decisions section;
+    Review docs/decisions → REPORT missing ADRs for major architectural choices or outdated decision status;
+    IF NO DOCS EXIST YET: REPORT ALL INSIGHTS THAT BELONG TO decisions DOCS;
+  "
 )
 
 ```
