@@ -36,13 +36,16 @@ Default: Update mode (modify existing + create new where warranted)
 
 ## Core Rules (Non-Negotiable)
 
-- **docs/** is a structured reference documentation
+- `docs/` is structured reference documentation
+- Canonical directory name is `docs/` (lowercase). Any other casing is invalid.
 - NEVER generate AGENTS.md inside `docs/**`
 - NEVER duplicate content between docs
 - Prefer updating existing knowledge over creating new files
-- if child contains knowledge, parent should NOT repeat it, can reference it but not repeat
+- If a child contains knowledge, the parent must not repeat it; reference only
+- Empty or placeholder files must not exist; never create them; delete if found
 - Always preserve existing knowledge unless invalidated by code changes
-- If the index knowledge process is analysing only the code changes, it should only update the documentation that is related to the code changes, and not remove any existing documentation that is not related to the code changes
+- If the index knowledge process is analyzing only code changes, update only related docs and do not remove unrelated docs
+- If classification is unclear, ask the user; do not guess
 
 ---
 
@@ -73,7 +76,7 @@ TodoWrite([
 
 ## Phase 0: Repository Classification
 
-**IMPORTANT:** ONLY DO THIS IF NO ./Docs EXIST!
+**IMPORTANT:** ONLY DO THIS IF NO ./docs EXIST!
 
 Determine repository type before any generation.
 

@@ -18,7 +18,7 @@ Each directory answers a **different kind of question**.
 
 A repository that contains a complete, single deployable application/service/product/library
 
-#### layout prefered:
+#### layout preferred:
 
 ```
 docs/
@@ -32,7 +32,7 @@ docs/
 
 ### Monorepo repository
 
-Monorepo is single repository that contains multiple logical projects, services, or packages, which are developed and versioned together.
+A monorepo is a single repository that contains multiple logical projects, services, or packages, which are developed and versioned together.
 
 A monorepo is not about size. Small monorepos exist; large ones can be clean. It’s about ownership and versioning, not folder depth.
 
@@ -71,7 +71,7 @@ docs/
 tooling/
 ```
 
-#### layout prefered:
+#### layout preferred:
 
 Repo root folder:
 
@@ -85,7 +85,7 @@ docs/
 └─ ...
 ```
 
-each project/service/library has it own docs:
+Each project/service/library has its own docs:
 
 ```
 docs/
@@ -102,24 +102,35 @@ Final structure example:
 ```
 apps/
 ├─ web/
-│  └─docs/
+│  └─ docs/
 ├─ mobile/
-│  └─docs/
+│  └─ docs/
 ├─ services/
-│  └─docs/
+│  └─ docs/
 ├─ admin/
-│  └─docs/
-└─docs/
+│  └─ docs/
+└─ docs/
 ```
 
 Rule of thumb:
 
-- If it applies to more than one unit > goes in root docs/
-- If it’s only about one unit > goes in that unit’s docs/ and if is important for general purpose can go to root docs
+- If it applies to more than one unit → root `docs/` only
+- If it applies to exactly one unit → that unit's `docs/` only
+- Do not duplicate. Use references when needed.
 
 <IMPORTANT>
     IF CANNOT DISTINGUISH IF IS A MONOREPO OR NOT ASK USER TO CLARIFY
 </IMPORTANT>
+
+---
+
+## Global Rules
+
+- Canonical directory name is `docs/` (lowercase). Any other casing is invalid.
+- Create a doc file only when there is relevant, non-empty information.
+- Empty or placeholder files must not exist; delete them.
+- If classification is unclear, ask the user. Do not guess.
+- Do not duplicate content across layers or between root and unit docs. Use references.
 
 ---
 
@@ -131,7 +142,7 @@ Rule of thumb:
 - shared vocabulary
 - system shape
 
-### Contents:
+### Allowed patterns (create only if content exists):
 
 ```
 overview/
@@ -142,9 +153,9 @@ overview/
 
 ### Rules:
 
-- No implementation details
-- No APIs
-- No framework-specific language
+- DO NOT include implementation details
+- DO NOT include APIs
+- DO NOT use framework-specific language
 
 ---
 
@@ -156,7 +167,7 @@ overview/
 - define invariants and language
 - independent of code
 
-### Contents:
+### Allowed patterns (create only if content exists):
 
 ```
 domain/
@@ -176,9 +187,9 @@ domain/
 
 ### Rules:
 
-- No mention of databases, APIs, classes, or frameworks
-- If it cannot be explained without code → it does NOT belong here
-- This folder should remain stable even if the implementation changes
+- DO NOT mention databases, APIs, classes, or frameworks
+- Must be explainable without code; otherwise it does not belong here
+- Must remain stable even if implementation changes
 
 ---
 
@@ -189,7 +200,7 @@ domain/
 - describe system internals
 - explain architecture and interfaces
 
-### Contents:
+### Allowed patterns (create only if content exists):
 
 ```
 technical/
@@ -207,9 +218,9 @@ technical/
 
 ### Rules:
 
-- Can reference code, services, protocols
-- Should reference domain concepts, not redefine them
-- Avoid duplication of domain language
+- MAY reference code, services, protocols
+- MUST reference domain concepts, do not redefine them
+- DO NOT duplicate domain language
 
 ---
 
@@ -220,7 +231,7 @@ technical/
 - enable local development
 - enforce conventions
 
-### Contents:
+### Allowed patterns (create only if content exists):
 
 ```
 development/
@@ -232,8 +243,8 @@ development/
 
 ### Rules:
 
-- Practical and actionable
-- Assume reader wants to modify the system
+- MUST be practical and actionable
+- Assume reader intends to modify the system
 
 ---
 
@@ -244,7 +255,7 @@ development/
 - production usage
 - incident handling
 
-### Contents:
+### Allowed patterns (create only if content exists):
 
 ```
 operations/
@@ -256,8 +267,8 @@ operations/
 
 ### Rules:
 
-- Focus on reality, not ideals
-- Prefer checklists and procedures
+- MUST focus on reality, not ideals
+- MUST prefer checklists and procedures
 
 ---
 
@@ -270,14 +281,14 @@ operations/
 
 ### What Belongs Here
 
-Create an ADR when:
+Create an ADR only when:
 
 - the decision has long-term impact
 - reversing it would be expensive
 - multiple reasonable alternatives existed
 - the decision affects more than one component or team
 
-Do NOT create ADRs for:
+DO NOT create ADRs for:
 
 - routine refactors
 - bug fixes
@@ -286,18 +297,18 @@ Do NOT create ADRs for:
 
 ### ADR Lifecycle
 
-Each ADR has a status:
+Each ADR MUST have a status:
 
 - **Proposed** — under discussion
 - **Accepted** — decision approved and active
 - **Superseded** — replaced by a newer ADR
 - **Deprecated** — no longer relevant, but kept for history
 
-Status changes must be explicit.
+Status changes MUST be explicit.
 
 ---
 
-### Contents:
+### Allowed patterns (create only if content exists):
 
 ```
 decisions/
@@ -310,15 +321,15 @@ decisions/
 
 **ADR** = Architecture Decision Record
 
-`[ADR-0001-auth-strategy.md`
+`ADR-0001-auth-strategy.md`
 
 ### Rules:
 
-- Decisions are immutable once accepted
-- Record context, alternatives, and consequences
-- New decisions create new ADRs
-- Superseded ADRs must reference the replacing ADR
-- Technical details belong in `docs/technical/`
+- Accepted decisions are immutable
+- MUST record context, alternatives, and consequences
+- New decisions MUST create new ADRs
+- Superseded ADRs MUST reference the replacing ADR
+- Technical details MUST live in `docs/technical/`
 
 ---
 
@@ -347,11 +358,7 @@ When adding documentation, ask:
 If unsure:
 
 - ask for clarification
-
-If not clear:
-
-- default to **domain**
-- refactor later if needed
+- do not guess or default
 
 ---
 
