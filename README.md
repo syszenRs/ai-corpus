@@ -18,86 +18,44 @@ Core concepts (agents, commands, and skills) are expected to map conceptually.
 
 # Setup
 
+## First-time global setup (one time per machine)
+
+1. Copy the file `opencode.json` or at least bolded MCP definitions to:
+   `~/.config/opencode`
+
+## Usage
+
 ### Per-project initialization
 
-1. Copy/clone this to the project root folder
+1. create .opencode folder in root
+2. Copy/clone this to the opencode folder
+3. delete opencode.json
 
-2. Install the required Node tools (or equivalents for your environment).
-   To verify what is already installed, run:
-   `npm list -g --depth=0`
+### As global config
 
-### First-time global setup (one time per machine)
-
-1. Copy the file `opencode.json` or at least Context7 and OpenSrc MCP definitions to:
-   `~/.config/opencode`
+1. Copy/clone all of this to the `~/.config/opencode`
 
 ### Final cleanup
 
-1. Delete this README and opencode.json
+1. Delete this README
 
 ## Node tools needed installed
 
-```
-npm@latest
-opencode-ai@latest
-opensrc@latest
-```
+- npm@latest
+- opencode-ai@latest
+- opensrc@latest
 
-## MCP server config
+## MCP used
 
-```javascript
-"mcp": {
-    "svelte": {
-      "type": "remote",
-      "url": "https://mcp.svelte.dev/mcp",
-      "enabled": true
-    },
-    "playwright": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@playwright/mcp@latest"
-      ],
-      "enabled": true
-    },
-    "Better Auth": {
-      "type": "remote",
-      "url": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp",
-      "enabled": true
-    },
-    "Context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": {
-		  "CONTEXT7_API_KEY": "ctx7sk-2a13a602-75a6-4e5e-a32c-bb01d5a36d7e"
-		},
-		"enabled": true
-    },
-	 "opensrc": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "opensrc-mcp"
-      ],
-      "enabled": true
-    },
-	"filesystem": {
-	  "type": "local",
-	  "command": [
-		"npx",
-		"-y",
-		"@modelcontextprotocol/server-filesystem",
-		"C:/Users/syszen/Desktop/coding"
-	  ],
-	  "enabled": true
-	},
-	"grep_app": {
-      "type": "remote",
-      "url": "https://mcp.grep.app"
-    }
-}
-```
+**bolded:** should be in config
+
+- svelte: Build and reason about Svelte apps with component-level awareness.
+- playwright: Control browsers to run end-to-end tests and scripted user flows.
+- Better Auth: Handle authentication flows, sessions, and identity primitives.
+- **Context7**: Fetch up-to-date library and framework documentation on demand.
+- **opensrc**: Search, inspect, and reason about open-source repositories.
+- **filesystem**: Read, write, and manage local project files safely.
+- **grep_app**: Perform fast, structured text search across codebases.
 
 ## Acknowledgments
 
