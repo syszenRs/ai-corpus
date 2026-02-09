@@ -168,6 +168,8 @@ If a step is mechanical, call the skill directly without a subagent.
 
 ### End-to-end use case
 
+(all of this can be achievable with the command `/next-task <task context>` )
+
 #### Step 1: Spec planning
 
 - User runs: `/spec-planner <task context>`

@@ -21,6 +21,12 @@ Generate consistent, informative commit messages following the Conventional Comm
 
 - you can use the current context to fill any gaps needed
 
+## Commit Authorization Rule (Hard)
+
+- This skill drafts commit messages. It does not authorize creating commits.
+- Create commits only after explicit user approval (e.g. "yes commit").
+- Requests like "continue" or "include this file" are not commit approval.
+
 1. **Analyze changes**: Run `git diff --staged` to see what's being committed
 2. **Identify the type**: Determine the primary change category
 3. **Find the scope**: Identify the main area affected
@@ -162,3 +168,8 @@ items before insertion.
 Fixes #234"
 
 ```
+
+<critical>
+BEFORE FINALIZING THE COMMIT MESSAGE, ALWAYS SHOW THE USER A SUMMARY OF THE CHANGES AND THE PROPOSED MESSAGE. ALLOW THEM TO REQUEST REVISIONS OR APPROVE AS IS.
+IS MANDATORY TO GET USER APPROVAL BEFORE FINALIZING THE COMMIT MESSAGE.
+</critical>
