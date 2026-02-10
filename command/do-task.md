@@ -19,8 +19,7 @@ Complete one work item from the ./todo.md file. Implements the next with most pr
 ## Execution Rules (Hard)
 
 1. Run all steps continuously in one execution. Do not stop after planning except if are clarifications needed from the user.
-2. Stop only if truly blocked, require clarifications or need user input(missing secret, destructive ambiguity, or explicit user pause request).
-3. Print phase feedback lines exactly as specified in each step.
+2. Print phase feedback lines exactly as specified in each step.
 
 ## Process
 
@@ -42,13 +41,17 @@ TodoWrite([
 DURING THE PROCESS, UNLESS YOU NEED CLARIFICATIONS GIVE FEEDBACK TO THE USER ABOUT WHAT YOUR ARE DOING;
 EACH STEP BELOW HAS SECTION 'FEEDBACK'; THIS SHOULD BE A GUIDELINE FOR WHAT YOU SHOW;
 
-### 0. Validation (MANDATORY)
+### 1. Validation (MANDATORY)
 
 - The user can use TK-0001 or 0001 format for the forlder name "TK-0001"
 - if the command `/do-task` don't have a valid folder name inside the .todo folder, say `Invalid task name` and STOP
 - if no task is there to be picked (status = Ready or In Progress), say `No Task to be picked` and STOP
 
-### 1. Planning
+THIS STEP IS MANDATORY, IF NO $ARGUMENTS PASSED THAT MATCH A FOLDER NAME STOP EXECUTION!!
+
+### 2. Planning
+
+**Mark `planning` as in_progress.**
 
 - get the next task in the priority of the Objective/Deliverable in progress/development for the folder specified
 - read agents.md and code of project to get a sense of where and what
@@ -70,7 +73,13 @@ Planning Complete
 {SMALL DESCRIPTION OF THE PLAN}
 ```
 
-### 2. Implement Task
+If no clarity needed from the user go to next step continuously in one execution, without stoping
+
+**Mark `planning` as complete.**
+
+### 3. Implement Task
+
+**Mark `implementing` as in_progress.**
 
 If is in build mode, start implementation, if not ask user to confirm proceed
 Work on the single task until verification steps pass.
@@ -80,7 +89,13 @@ Work on the single task until verification steps pass.
 1. before start: `Starting implementation for <folder_name> - <TaskId>`
 2. on complete planning: `Implementation Complete`
 
-### 3. Feedback Loops (REQUIRED)
+If no clarity needed from the user go to next step continuously in one execution, without stoping
+
+**Mark `implementing` as complete.**
+
+### 4. Feedback Loops (REQUIRED)
+
+**Mark `testing` as in_progress.**
 
 1. Make sure that implementations is complete
 2. Test the task
@@ -112,7 +127,13 @@ Work on the single task until verification steps pass.
 
 3. on complete planning: `Testing Complete`
 
-### 4. Review
+If no clarity needed from the user go to next step continuously in one execution, without stoping
+
+**Mark `testing` as complete.**
+
+### 5. Review
+
+**Mark `reviewing` as in_progress.**
 
 1. call tool/command `/code-review unstaged`
 2. if any fedback act on it going to step 1 or 2 depending of the issues
@@ -123,13 +144,29 @@ Work on the single task until verification steps pass.
 2. display code review feedback if any
 3. on complete review: `Implementation Complete`
 
-### 5. Update documentation
+If no clarity needed from the user go to next step continuously in one execution, without stoping
+
+**Mark `reviewing` as complete.**
+
+### 6. Update documentation
+
+**Mark `documentation` as in_progress.**
 
 call skill `skill({ name: 'index-knowledge' })` to udpate all current changes
 
-### 6. Update Progress
+If no clarity needed from the user go to next step continuously in one execution, without stoping
+
+**Mark `documentation` as complete.**
+
+### 7. Update Progress
+
+**Mark `updating status` as in_progress.**
 
 Update progress at `.todo/<folder_name>/todo.md` file and any spec changes that arise during development
+
+If no clarity needed from the user go to next step continuously in one execution, without stoping
+
+**Mark `updating status` as complete.**
 
 ## Completion
 
