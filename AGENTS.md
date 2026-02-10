@@ -24,7 +24,7 @@ The corners you cut will be cut again.
 
 ## DOCUMENTATION **IMPORTANT**
 
-ALL DOCUMENTATION FOR THIS PROJECT LIVES AT `./Docs` - THIS SHOULD BE THE MAIN SOURCE OF TRUTH; IF UNCLEAR ASK USER;
+ALL DOCUMENTATION FOR THIS PROJECT LIVES AT `./docs` - THIS SHOULD BE THE MAIN SOURCE OF TRUTH; IF UNCLEAR ASK USER;
 
 ## Plans
 
@@ -66,21 +66,29 @@ This is not negotiable. This is not optional. You cannot rationalize your way ou
 
 **Commands live at /command folder**
 
-#### next-task
+#### do-task <task-folder-id>
 
-Invoke for: selects the highest-leverage task, plans the work, implements changes, reviews results, and updates documentation
+Invoke for: selects the highest-leverage work item, plans the work, implements changes, reviews results, and updates documentation
 
 #### code-review
 
 Invoke for: review all the uncommited code and reports actionable findings
 
-#### opensrc
+#### ingest-repo
 
-Invoke for: understanding used 3rd party libraries/packages and update internal documentation with learnings
+Invoke for: understanding used 3rd party libraries/packages and update internal documentation with learnings using opensrc
 
-#### plan-spec
+#### definer
 
 Invoke for: derives a concrete technical plan or spec from a goal, including decisions, steps, and open questions
+
+#### close-task
+
+Invoke for: //TODO
+
+#### bootstrap-docs
+
+Invoke for: analyze the repo and initialize the docs folder based on its understanding
 
 ## Workflow: Commands → Skills → Subagents
 
@@ -150,45 +158,47 @@ If a step is mechanical, call the skill directly without a subagent.
 
 ### Example: implement-feature
 
-**Command:** `/next-task do something like x`
+**Command:** `/do-task do something like x`
 
 **Workflow steps:**
 
-1. `analyze-request` — parse user input into acceptance criteria
-2. `locate-impact` — identify affected files and domains
+1. `analyze-request` - parse user input into acceptance criteria
+2. `plan` - plan, create todo.md and create spec.md for the feature requested
+3. `locate-impact` — identify affected files and domains
     - subagent useful for parallel scanning
-3. `propose-changes` — outline plan and edits
+4. `propose-changes` — outline plan and edits
     - subagent useful for drafting or design exploration
-4. `apply-changes` — implement edits (usually local)
-5. `verify` — tests, lint, sanity checks
-6. `documentation` - update documentation where it makes sense
-7. `commit` - stage and commit changes
+5. `apply-changes` — implement edits (usually local)
+6. `verify` — tests, lint, sanity checks
+7. `documentation` - update documentation where it makes sense
 
 ---
 
-### End-to-end use case
-
-(all of this can be achievable with the command `/next-task <task context>` )
+### Normal End-to-end use case
 
 #### Step 1: Spec planning
 
-- User runs: `/spec-planner <task context>`
+- User runs: `/definer <task context>`
 - Command may interact with user for clarification
 - Output: proposed spec / plan
 
 #### Step 2: Build
 
 - User changes mode to: `build`
+- User runs: `/do-task <TaskId>`
 
-#### Step 3: Review
+#### Step 2.1: Review and repeat
 
-- User runs: `/code-review`
-- Reviewer output is evaluated
+- User reviews output
 - If issues are found:
     - Return to `/build` with reviewer feedback
-    - If unclear requirements emerge, loop back to `/spec-planner`
+    - If unclear requirements emerge, loop back to `/definer`
+- Repeats Step 2 until all task are done
 
-#### Step 4: Finalize
+#### Step 4: Overall review
 
-- Generate index-knowledge
-- Commit changes
+- User runs: `/code-review`
+
+#### Step 5: Close task
+
+- User runs: `/close-task <TaskId>`

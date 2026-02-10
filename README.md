@@ -61,4 +61,4 @@ Core concepts (agents, commands, and skills) are expected to map conceptually.
 
 This was inspired by prior work and discussions in the open-source ecosystem.
 
-This was inspired mainly from [dmmulroy](https://github.com/dmmulroy/.dotfiles/tree/main/home/.config/opencode)
+This was inspired mainly from [dmmulroy](https://github.com/dmmulroy/.dotfiles/tree/main/home/.config/opencode) and [claude-plugins-official](https://github.com/anthropics/claude-plugins-official)

@@ -36,8 +36,8 @@ TodoWrite([
   { id: "clarify", status: "pending", priority: "high" },
   { id: "discover", status: "pending", priority: "high" },
   { id: "draft", status: "pending", priority: "high" },
-  { id: "refine", status: "pending", priority: "high" }
-  { id: "spec complete", status: "pending", priority: "medium" }
+  { id: "refine", status: "pending", priority: "high" },
+  { id: "spec complete", status: "pending", priority: "medium" },
   { id: "deliverables", status: "pending", priority: "medium" }
 ])
 ```
@@ -160,7 +160,6 @@ Run completeness check:
 
 Phase: DONE
 Type: <feature plan | architecture decision | refactoring | strategy>
-Effort: <S/M/L/XL>
 Status: Ready for task breakdown
 
 Discovery:
@@ -174,8 +173,8 @@ Key Trade-offs:
 - <what we're choosing vs alternatives>
 
 Deliverables (Ordered):
-1. [D1] (effort) — depends on: -
-2. [D2] (effort) — depends on: D1
+1. [D1] — depends on: -
+2. [D2] — depends on: D1
 
 Open Questions:
 - [ ] <if any remain> → Owner: [who]
@@ -185,7 +184,7 @@ Open Questions:
 
 **ONLY IF DON'T EXIST**, CREATE FOLDER .todo at root level
 
-1. Derive folder name from feature/decision name (kebab-case)
+1. Folder name should be `TK-<0000>` where `TK` is short for "task" and `<0000>` is a unique identifier (sequential number)
 2. Write spec to `.todo/<folder_name>/spec.md`
 3. Confirm: `Spec written to: .todo/<folder_name>/spec.md`
 

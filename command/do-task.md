@@ -1,12 +1,14 @@
 ---
-description: Complete the next incomplete task
+description: Implement the next work item in the list for a specific feature folder
 ---
 
-Complete one task from the ./todo.md file. Implements the next task most priority, runs feedback loops, and commits.
+Complete one work item from the ./todo.md file. Implements the next with most priority, runs feedback loops.
 
 ## Usage
 
-/next-task <folder_name>
+/do-task $ARGUMENTS
+
+**Arguments = folder_name**
 
 ## File Locations
 
@@ -16,10 +18,9 @@ Complete one task from the ./todo.md file. Implements the next task most priorit
 
 ## Execution Rules (Hard)
 
-1. Run all steps continuously in one execution. Do not stop after planning.
+1. Run all steps continuously in one execution. Do not stop after planning except if are clarifications needed from the user.
 2. Stop only if truly blocked, require clarifications or need user input(missing secret, destructive ambiguity, or explicit user pause request).
 3. Print phase feedback lines exactly as specified in each step.
-4. Commit requires explicit user approval in the same conversation turn.
 
 ## Process
 
@@ -33,7 +34,6 @@ TodoWrite([
   { id: "testing", status: "pending", priority: "medium" },
   { id: "reviewing", status: "pending", priority: "medium" },
   { id: "documentation", status: "pending", priority: "medium" },
-  { id: "commit", status: "pending", priority: "medium" },
   { id: "updating status", status: "pending", priority: "medium" }
 ])
 ```
@@ -44,16 +44,16 @@ EACH STEP BELOW HAS SECTION 'FEEDBACK'; THIS SHOULD BE A GUIDELINE FOR WHAT YOU 
 
 ### 0. Validation (MANDATORY)
 
-- if the command `/next-task` don't have a valid folder name inside the .todo folder say `Invalid task name` and STOP
+- The user can use TK-0001 or 0001 format for the forlder name "TK-0001"
+- if the command `/do-task` don't have a valid folder name inside the .todo folder, say `Invalid task name` and STOP
+- if no task is there to be picked (status = Ready or In Progress), say `No Task to be picked` and STOP
 
 ### 1. Planning
 
-- get the next task in the priority of the epic/feature in progress/development for the folder specified
+- get the next task in the priority of the Objective/Deliverable in progress/development for the folder specified
 - read agents.md and code of project to get a sense of where and what
 
-call tool/command `/spec-planner {task spec}`
-
-//TODO: this is stoping after this phase why?
+call tool/command `/definer {task spec}`
 
 REMEMBER THAT THE SKILL HAVE agent `@counsel` and `@researcher` that can use
 
@@ -62,7 +62,13 @@ Then follow the skill instructions to develop the spec.
 #### Feedback
 
 1. before start: `Starting planning for <folder_name> - <TaskId>`
-2. on complete planning: `Planning Complete`
+2. on complete planning:
+
+```
+Planning Complete
+
+{SMALL DESCRIPTION OF THE PLAN}
+```
 
 ### 2. Implement Task
 
@@ -108,7 +114,7 @@ Work on the single task until verification steps pass.
 
 ### 4. Review
 
-1. call tool/command `/code-review`
+1. call tool/command `/code-review unstaged`
 2. if any fedback act on it going to step 1 or 2 depending of the issues
 
 #### Feedback
@@ -121,19 +127,7 @@ Work on the single task until verification steps pass.
 
 call skill `skill({ name: 'index-knowledge' })` to udpate all current changes
 
-### 6. Commit
-
-Ask user if wants to commit.
-
-If yes run skill `skill({ name: 'commit-message' })`
-
-Ask user if message is approved
-
-ONLY IF Approved, commit using message from skill
-
-`git add -A && git commit -m '<message from skill>'`
-
-### 7. Update Progress
+### 6. Update Progress
 
 Update progress at `.todo/<folder_name>/todo.md` file and any spec changes that arise during development
 
@@ -144,7 +138,7 @@ Display end-of-task feedback using this exact structure:
 ```
 Implementation Complete
 
-<TK-ID> done.
+<WK-ID> done.
 What I ran:
 - <command 1>
 - <command 2>
@@ -174,7 +168,3 @@ Rules:
 This codebase will outlive you. Every shortcut becomes someone else's burden. Patterns you establish will be copied. Corners you cut will be cut again.
 
 Fight entropy. Leave the codebase better than you found it.
-
-<user-request>
-$ARGUMENTS
-</user-request>

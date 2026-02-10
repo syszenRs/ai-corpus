@@ -6,22 +6,12 @@ This document defines the **canonical format, rules, and semantics** for `todo.m
 
 ---
 
-## File Location
-
-```
-/todo.md
-```
-
-No other file may duplicate or override task state.
-
----
-
 ## Table Format (Mandatory)
 
-`todo.md` MUST contain exactly one markdown table with the following columns, in order:
+`todo.md` MUST contain a table with the following columns, in order:
 
 ```
-ID | Level | Name | Description/Context | Priority | Effort (hrs) | Blocked By | Status
+ID | Level | Name | Description/Context | Priority | Blocked By | Status
 ```
 
 ---
@@ -32,9 +22,9 @@ ID | Level | Name | Description/Context | Priority | Effort (hrs) | Blocked By |
 
 - Unique identifier
 - Format: `<TYPE>-<NNN>`
-    - `EP-###` → Epic
-    - `FE-###` → Feature
-    - `TK-###` → Task
+    - `OB-###` → Objective
+    - `DL-###` → Deliverable
+    - `WK-###` → Work Item
 
 - IDs MUST NOT be reused
 
@@ -46,9 +36,9 @@ Defines abstraction level.
 
 Allowed values:
 
-- `Epic`
-- `Feature`
-- `Task`
+- `Objective`
+- `Deliverable`
+- `Work Item`
 
 ---
 
@@ -100,21 +90,15 @@ Allowed values:
 ## Execution Rules (Hard)
 
 1. No item may move to `In Progress` if `Blocked By` is not `-`
-2. Effort must be set before work begins
-3. Only Tasks are executable
-4. Features and Epics are planning containers
-5. Completed work must update `Status` to `Done`
+2. Only Work Items are executable
+3. Deliverable and Objective are planning containers
+4. Completed work must update `Status` to `Done`
 
 ---
 
 ## Relationship to Specs
 
-- Every Epic MUST have a completed spec in:
-
-    ```
-    /specs/<epic-name>.md
-    ```
-
+- Every Objective MUST have a completed spec.md in same folder
 - Tasks must not contradict the owning spec
 - Spec changes require updating affected todo items
 
@@ -148,9 +132,9 @@ Recalculate Priority when any of the following occur:
 ### Critical Path Boost
 
 - Unblocks 2+ items → +10 Priority
-- Unblocks an Epic → +20 Priority
+- Unblocks an Objective → +20 Priority
 
-Boost must be documented in the Epic spec.
+Boost must be documented in the Objective spec.
 
 ---
 

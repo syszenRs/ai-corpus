@@ -2,7 +2,7 @@
 description: Clone a repo and enhance knowledge base
 ---
 
-Clone a repository using opensrc and generate hierarchical AGENTS.md documentation.
+Clone a repository using opensrc and generate documentation based on it.
 
 <critical>
 **TodoWrite ALL phases. Mark in_progress → completed in real-time.**
@@ -66,7 +66,3 @@ Documentation files generated:
 
 The repository is now enhanced with repository <repository_name> context.
 ```
-
-<user-request>
-$ARGUMENTS
-</user-request>

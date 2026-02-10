@@ -1,17 +1,17 @@
 # Project Todo
 
-| ID     | Level   | Name            | Description/Context | Priority | Blocked By | Status  |
-| ------ | ------- | --------------- | ------------------- | -------- | ---------- | ------- |
-| EP-001 | Epic    | Example epic    | Example description | 120      | -          | Pending |
-| FE-001 | Feature | Example feature | Example description | 80       | -          | Pending |
-| TK-001 | Task    | Example task    | Example description | 40       | -          | Pending |
-| FE-002 | Feature | Example feature | Example description | 80       | -          | Pending |
-| TK-002 | Task    | Example task    | Example description | 40       | -          | Pending |
-| TK-003 | Task    | Example task    | Example description | 40       | -          | Pending |
-| EP-002 | Epic    | Example epic    | Example description | 120      | -          | Pending |
-| FE-003 | Feature | Example feature | Example description | 80       | -          | Pending |
-| TK-004 | Task    | Example task    | Example description | 40       | -          | Pending |
-| TK-005 | Task    | Example task    | Example description | 40       | -          | Pending |
+| ID     | Level       | Name                | Description/Context | Priority | Blocked By | Status  |
+| ------ | ----------- | ------------------- | ------------------- | -------- | ---------- | ------- |
+| OB-001 | Objective   | Example objective   | Example description | 120      | -          | Pending |
+| DL-001 | Deliverable | Example deliverable | Example description | 80       | -          | Pending |
+| WK-001 | Work Item   | Example work item   | Example description | 40       | -          | Pending |
+| DL-002 | Deliverable | Example deliverable | Example description | 80       | -          | Pending |
+| WK-002 | Work Item   | Example work item   | Example description | 40       | -          | Pending |
+| WK-003 | Work Item   | Example work item   | Example description | 40       | -          | Pending |
+| OB-002 | Objective   | Example objective   | Example description | 120      | -          | Pending |
+| DL-003 | Deliverable | Example deliverable | Example description | 80       | -          | Pending |
+| WK-004 | Work Item   | Example work item   | Example description | 40       | -          | Pending |
+| WK-005 | Work Item   | Example work item   | Example description | 40       | -          | Pending |
 
 # LOG
 
